@@ -1,0 +1,26 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+
+<div id="page-product" class="wrapper grid two-columns collapse">
+  <div class="product-info product-info-section">
+    <h2 class="product-title">
+      {{ product.title }}
+      <span class="price">{{ product.price | money_without_trailing_zeros }}</span>
+    </h2>
+
+    <div class="below-title">
+      <div class="product-description">{{ product.description }}</div>
+
+      {% include 'add-to-cart-form' %}
+    </div>
+
+    
+  </div>
+
+
+  {% for image in product.images %}
+    <div class="product-image">
+      <img src="{{ image.src | img_url: '1200x1200', crop: 'center' }}" alt="{{ image.alt | escape }}">
+    </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,13 @@
+<div id="page-index">
+  <div class="index-top wrapper valign-center ta-center">
+    <h1>{{ 'general.shop.description' | t }}</h1>
+    <p>{{ 'general.shop.sub_description' | t }}</p>
+  </div>
+
+  <div class="index-products wrapper">
+    {% for product in collections.frontpage.products limit:4 %}
+      {% include 'product-card' %}
+    {% endfor %}  
+  </div>
+</div>
+
